@@ -1,0 +1,29 @@
+'''CRIE UM PROGRAMA A ONDE LEIA UM NÚMERO INTEIRO E FAÇA QUE O COMPUTADOR PENSE EM UM NÚMERO DE 1 ATÉ 10 E INFORME PARA 
+O JOGARDOR SE ELE QUER JOGAR PAR OU IMPAR. SOME OS NÚMEROS JOGADOS PELO COMPUTADOR E O JOGADOR PARA DEFINIR SE É PAR OU ÍMPAR
+SE O JOGADOR GANHAR O JOGO CONTINUA E SE PERDE INFORME A QUANTIDADE DE VEZES QUE ELE GANHOU.'''
+
+from random import randint
+qntd = 0 #FAZ A QUANTIDADE JOGOS QUE O JOGADOR GANHOU COMEÇANDO COM 0
+while True: #FAZ O LOOP 
+    jogador = int(input('JOGUE UM NÚMERO: ')) #PERGUNTA O NÚMERO QUE O JOGADOR IRÁ JOGAR
+    computdor = randint(0,10) #O COMPUTADOR IRÁ GERAR UM NÚMERO PARA JOGAR
+    total = jogador + computdor #SOMATORIO DOS VALORES JOGADO PELO JOGADOR E COMPUTADOR QUE DEFINE SE É PAR OU ÍMPAR
+    resp = ' ' 
+    while resp not in "PI": #LOOP QUANDO A RESPOSTA NÃO TIVER ENTRE PI O PROGRAMA IRÁ PERGUNTAR NOVAMENTE
+        resp = (input('PAR OU ÍMPAR? ')).strip().upper()[0] #PERGUNTA AO JOGAGOR SE IRÁ JOGAR PAR OU ÍMPAR
+        print(f'Você jogou o {jogador} e o Computador {computdor} = {total}')#INFORMA OS NÚMEROS QUE FORAM JOGADOS E SOMA ENTRE ELES
+    if resp == 'P': #SE A RESPOSTA FOR PAR FARÁ A VERIFICAÇÃO DA SOMATORIA DOS NÚMEROS
+        if total % 2 == 0: #SE O TOTAL FOR DIVIDO POR 2 = 0 É PAR
+            print('VOCE GANHOU!')
+            qntd += 1 #ACRESCENTA MAIS 1 PARA SABER QUANTAS VEZES O JOGADOR GANHOU
+        else:
+            print('VOCE PERDEU!')
+            break
+    elif resp == 'I': #SE A RESPOSTA FOR ÍMPAR PARA A VERIFICAÇÃO DA SOMATORIA DOS NÚMEROS
+        if total % 2 == 1: #SE O TOTAL FOR DIVIDO POR 2 E RESTAR 1 É ÍMPAR
+            print('VOCE GANHOU')
+            qntd +=1
+        else:
+            print('VOCE PERDEU')
+            break
+print(f'GAME OVER!!! você ganhou {qntd} vezes do Computador')#MOSTRARÁ A QUANTIDADE DE VEZES QUE O JOGADOR GANHOU, ATÉ PERDER.
